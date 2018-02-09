@@ -1,0 +1,17 @@
+<div *ngIf="!registered" style="text-align:center">
+  <input [(ngModel)]="username"  (keyup.enter)="register()">
+  <button (click)="register()">Ingresar</button>
+</div>
+<div *ngIf="registered">
+  <h1 style="text-align:center">Hablalo {{username}}</h1>
+  <p>Usuarios conectados</p>
+  <p *ngFor="let u of users">{{u}}</p>
+  <h6 *ngIf="userTyping">User typing {{userTyping}}</h6>
+  <div *ngFor="let c of conversations" style="text-align:left">
+    <p>{{c.message}} - {{c.userId}}</p>
+  </div>
+  <div style="text-align:center">
+      <input [ngModel]="message" (ngModelChange)="typing($event)" (keyup.enter)="sendMessage()"/>
+      <button (click)="sendMessage()">Enviar</button>
+  </div>
+</div>
