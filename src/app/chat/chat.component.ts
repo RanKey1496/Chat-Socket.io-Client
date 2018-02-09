@@ -9,7 +9,7 @@ import * as io from 'socket.io-client';
 })
 export class ChatComponent implements OnInit {
 
-  private users: Array<any> = new Array;
+  private users;
   private conversations: Array<any> = new Array;
   private socket;
   private message;
@@ -35,10 +35,10 @@ export class ChatComponent implements OnInit {
       this.userTyping = false;
     });
     this.socket.on('user-registered', (data) => {
-      this.users.push(data.username);
+      this.users = data.users;
     });
     this.socket.on('user-disconnected', (data) => {
-      this.users = this.users.filter(e => e !== data.username);
+      this.users = data.users;
     });
   }
 
