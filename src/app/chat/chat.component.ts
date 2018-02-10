@@ -9,19 +9,19 @@ import * as io from 'socket.io-client';
 })
 export class ChatComponent implements OnInit {
 
-  private users;
-  private conversations: Array<any> = new Array;
-  private socket;
-  private message;
-  private userTyping = false;
-  private timer: any;
-  private registered = false;
-  private username;
+  users;
+  conversations: Array<any> = new Array;
+  socket;
+  message;
+  userTyping = false;
+  timer: any;
+  registered = false;
+  username;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.socket = io('http://192.168.0.56:3000/');
+    this.socket = io('https://rankey-socketio-server.herokuapp.com/');
   }
 
   connectSocket() {
